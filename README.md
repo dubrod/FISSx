@@ -9,6 +9,7 @@ Filterable Infinite Scroll Snippet
 Wayne Roddy (@dubrod)
 
 Jan Peca    (@TheBoxer)
+
 ==
 **Published**
 
@@ -26,6 +27,8 @@ This snippet should be used to create one of those cool Infinite Scroll (or not)
 
 ![resource tree](screencasts/demo-resources.jpg "Resource Tree")
 
+==
+
 ### Step 2 ###
 
 **Create your Category List**
@@ -42,4 +45,56 @@ If your resource tree looks like the above you should be able to use *getResourc
 ```
 
 ***Don't forget to insert your template ID for this page**
+
 This Page is ran on the **ROOT Page aka Grandparent**
+
+==
+
+### Step 3 ###
+
+**CHUNK: infinite-parent-list**
+
+```
+<li class="cat_item">
+  <a href="javascript:void(0)" class="[[+alias]]">[[+pagetitle]]</a> 
+</li>
+```
+
+**NOTE:** We are using the alias as the filterable class.
+
+==
+
+### Step 4 ###
+
+**SNIPPET: fissx**
+
+Goes in your main content section.
+
+```
+[[fissx? &tpl=`infinity_resources`]]
+```
+
+==
+
+### Step 5 ###
+
+**CHUNK: infinite-resources**
+
+```
+<article class="infinite_item [[+category_alias]]">
+    <a href="[[+alias]]">
+	<div class="infinite_item_media">
+		<img src="[[+tv_tn]]" alt="" />
+	</div>
+	<div class="infinite_item_content">
+		<h3>[[+category_pagetitle]]</h3>
+		<h1>[[+pagetitle]]</h1>
+	</div>
+    </a>
+</article>
+```
+
+**Note:** We have a Thumbnail Template Variable, the rest is defaulted
+
+
+
