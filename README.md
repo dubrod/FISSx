@@ -1,7 +1,7 @@
 FISSx
 =====
 
-Filterable Infinite Scroll Snippet
+Filterable Infinite Scroll Snippet for MODX (www.MODX.com)
 
 ==
 ##### AUTHORS #####
@@ -37,9 +37,9 @@ If your resource tree looks like the above you should be able to use *getResourc
 
 ```
 <ul id="category_list">
-	<li class="cat_item active"><a href="javascript:void(0)" class="all">Show All</a></li>
+	<li class="active"><a href="javascript:void(0)" class="all">Show All</a></li>
 					 	
-	[[!getResources? &parents=`[[*id]]` &tpl=`infinite-parent-list` &sortby=`menuindex` &sortdir=`ASC` &limit=`5` &includeTVs=`1` &depth=`1` &where=`{"template:=":XXX}`]]
+	[[!getResources? &parents=`[[*id]]` &tpl=`infinite-parent-list` &sortby=`menuindex` &sortdir=`ASC` &includeTVs=`1` &depth=`1` &where=`{"template:=":XXX}`]]
 
 </ul>
 ```
@@ -55,7 +55,7 @@ This Template is ran on the **ROOT Page aka Grandparent**
 **CHUNK: infinite-parent-list**
 
 ```
-<li class="cat_item">
+<li>
   <a href="javascript:void(0)" class="[[+alias]]">[[+pagetitle]]</a> 
 </li>
 ```
@@ -111,10 +111,8 @@ $(document).ready(function(){
 		$('#category_list li a').click(function() {
 			 
 			var ourClass = $(this).attr('class');
-			
-			 
+
 			$('#category_list li').removeClass('active');
-			 
 			$(this).parent().addClass('active');
 			
 			if(ourClass == 'all') {
