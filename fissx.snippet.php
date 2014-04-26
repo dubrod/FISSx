@@ -1,8 +1,11 @@
 <?php
 /**
  * fissx
+ * https://github.com/dubrod/FISSx
  *
  * DESCRIPTION
+ * This snippet should be used to create one of those cool Infinite Scroll (or not) Content Sections with a Filterable Category Listings. 
+ * There is no frontend code included, that should be customized to your design.
  *
  * PROPERTIES:
  *

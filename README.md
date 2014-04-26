@@ -17,7 +17,7 @@ Jan Peca    (@TheBoxer)
 
 ==
 
-This snippet should be used to create one of those cool Infinite Scroll (or not) Content Sections with a Filterable Category Listings. There is **no frontend** code including, that should be customized to your design.
+This snippet should be used to create one of those cool Infinite Scroll (or not) Content Sections with a Filterable Category Listings. There is **no frontend** code included, that should be customized to your design.
 
 ==
 
@@ -46,7 +46,7 @@ If your resource tree looks like the above you should be able to use *getResourc
 
 ***Don't forget to insert your template ID for this page**
 
-This Page is ran on the **ROOT Page aka Grandparent**
+This Template is ran on the **ROOT Page aka Grandparent**
 
 ==
 
@@ -71,7 +71,9 @@ This Page is ran on the **ROOT Page aka Grandparent**
 Goes in your main content section.
 
 ```
-[[fissx? &tpl=`infinity_resources`]]
+<div id="infinite_list">
+   [[fissx? &tpl=`infinity_resources`]]
+</div>
 ```
 
 ==
@@ -95,6 +97,44 @@ Goes in your main content section.
 ```
 
 **Note:** We have a Thumbnail Template Variable, the rest is defaulted
+
+==
+
+### Step 6 ###
+
+**jQuery for nav**
+
+```
+$(document).ready(function(){
+  
+    	// Infinite Filter
+		$('#category_list li a').click(function() {
+			 
+			var ourClass = $(this).attr('class');
+			
+			 
+			$('#category_list li').removeClass('active');
+			 
+			$(this).parent().addClass('active');
+			
+			if(ourClass == 'all') {
+				 
+				$('#infinite_list').children('article.infinite_item').show();
+			}
+			else {
+				 
+				$('#infinite_list').children('article:not(.' + ourClass + ')').hide();
+			 
+				$('#infinite_list').children('article.' + ourClass).show();
+			}
+			return false;
+		});
+});		
+```
+
+This is the basic function to create the filterable effect.
+
+
 
 
 
